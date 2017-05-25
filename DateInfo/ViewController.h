@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController
+@property (nonatomic, strong) IBOutlet UIDatePicker *datePicker;
+@property (nonatomic, strong) IBOutlet UITextView *textView;
 
+- (IBAction)didChangeDate:(id)sender;
 
 @end
 

@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self didChangeDate:self.datePicker];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -25,5 +26,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+- (void)didChangeDate:(id)sender {
+    NSDate *selectedDate = [(UIDatePicker*)sender date];
+    
+    self.textView.text = [NSString stringWithFormat:@"Year: %@", selectedDate.description];
+}
 
 @end
