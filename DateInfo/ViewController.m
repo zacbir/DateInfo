@@ -29,8 +29,22 @@
 
 - (void)didChangeDate:(id)sender {
     NSDate *selectedDate = [(UIDatePicker*)sender date];
+    NSDate *now = [NSDate date];
     
-    self.textView.text = [NSString stringWithFormat:@"Year: %@", selectedDate.description];
+    NSDateInterval *timeDifference = [[NSDateInterval alloc] initWithStartDate:[now earlierDate:selectedDate] endDate:[now laterDate:selectedDate]];
+    int daysFrom = round(timeDifference.duration / 86400);
+    
+    NSDateFormatter *weekdayFormatter = [[NSDateFormatter alloc] init];
+    weekdayFormatter.dateFormat = @"EEEE";
+    NSString *weekdayString = [weekdayFormatter stringFromDate:selectedDate];
+    
+    NSISO8601DateFormatter *isoFormatter = [[NSISO8601DateFormatter alloc] init];
+    NSString *isoString = [isoFormatter stringFromDate:selectedDate];
+    
+    self.weekdayLabel.text = weekdayString;
+    self.iso8601Label.text = isoString;
+    NSString *plural = daysFrom == 1 ? @"" : @"s";
+    self.intervalLabel.text = [NSString stringWithFormat:@"%d day%@ from now", daysFrom, plural];
 }
 
 @end
