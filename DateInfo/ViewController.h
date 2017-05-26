@@ -10,7 +10,9 @@
 
 @interface ViewController : UIViewController
 @property (nonatomic, strong) IBOutlet UIDatePicker *datePicker;
-@property (nonatomic, strong) IBOutlet UITextView *textView;
+@property (nonatomic, strong) IBOutlet UILabel *weekdayLabel;
+@property (nonatomic, strong) IBOutlet UILabel *iso8601Label;
+@property (nonatomic, strong) IBOutlet UILabel *intervalLabel;
 
 - (IBAction)didChangeDate:(id)sender;
 
